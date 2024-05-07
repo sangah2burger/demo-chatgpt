@@ -1,8 +1,23 @@
 <h1>ToDo Page</h1>
 <a href="/">Home</a>
 <a href="/about">About</a>
+
+<!-- Form for adding a new todo -->
+<form action="/todo/add" method="POST">
+    <input type="text" name="newTodo" placeholder="New todo">
+    <button type="submit">Add</button>
+</form>
+
 <ul>
     <% todos.forEach(function(todo) { %>
-        <li><%= todo %></li>
+        <li>
+            <%= todo %>
+
+            <!-- Button for deleting this todo -->
+            <form action="/todo/delete" method="POST" style="display: inline;">
+                <input type="hidden" name="todoToDelete" value="<%= todo %>">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
     <% }); %>
 </ul>
